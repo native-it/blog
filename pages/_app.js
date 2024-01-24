@@ -28,7 +28,7 @@ export default function MyApp ({ Component, pageProps, config, locale }) {
                 ackeeDomainId={config.analytics.ackeeConfig.domainId}
               />
             )}
-            {process.env.VERCEL_ENV === 'production' && config?.analytics?.provider === 'ga' && <Gtag />}
+            {config?.analytics?.provider === 'ga' && <Gtag />}
             <Component {...pageProps} />
           </>
         </ThemeProvider>
