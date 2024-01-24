@@ -20,7 +20,7 @@ const BLOG = {
   ogImageGenerateURL: 'https://native-it.com/assets/native_facebook.png', // The link to generate OG image, don't end with a slash
   socialLink: 'https://native-it.com/',
   seo: {
-    keywords: ['Blog', 'Website', 'Notion'],
+    keywords: ['Blog', 'Website', 'Native'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
