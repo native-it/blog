@@ -14,7 +14,7 @@ const BLOG = {
   since: '', // If leave this empty, current year will be used.
   postsPerPage: 7,
   sortByDate: true,
-  showAbout: true,
+  showAbout: false,
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://native-it.com/assets/native_facebook.png', // The link to generate OG image, don't end with a slash
