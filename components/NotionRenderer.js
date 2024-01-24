@@ -57,7 +57,9 @@ const components = {
                   import('prismjs/components/prism-stylus'),
                   import('prismjs/components/prism-swift'),
                   import('prismjs/components/prism-wasm'),
-                  import('prismjs/components/prism-yaml')
+                  import('prismjs/components/prism-yaml'),
+                  import('prismjs/components/prism-kotlin'),
+                  import('prismjs/components/prism-php'),
                 ])
                 return module.Code
               })
