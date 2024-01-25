@@ -6,6 +6,7 @@ import { useLocale } from "@/lib/locale";
 import useTheme from "@/lib/theme";
 
 const NavBar = () => {
+  const { updateMode, dark } = useTheme();
   const BLOG = useConfig();
   const locale = useLocale();
   const links = [
@@ -13,6 +14,18 @@ const NavBar = () => {
     { id: 1, name: locale.NAV.INDEX, to: BLOG.path || "/", show: true },
     { id: 2, name: locale.NAV.SEARCH, to: "/search", show: true },
   ];
+
+  const resolveLogo = (fallback) =>
+    !fallback && dark ? "/sun.svg" : "/moon.svg";
+  const [logo, _setLogo] = useState("/sun.svg");
+  const setLogo = (fallback) => _setLogo(resolveLogo(fallback));
+  useEffect(
+    () => {
+      setLogo();
+    },
+    [dark]
+  );
+
   return (
     <div className="flex-shrink-0">
       <ul className="flex flex-row">
@@ -29,6 +42,20 @@ const NavBar = () => {
               </li>
             )
         )}
+        <li
+          className="block ml-4 text-black dark:text-gray-50 nav"
+          onClick={() => {
+            updateMode(!dark);
+          }}
+        >
+          <Image
+          src={logo}
+          width={18}
+          height={20}
+          alt="site-title"
+          className="site-title"
+        />
+        </li>
       </ul>
     </div>
   );
@@ -44,11 +71,17 @@ export default function Header({ navBarTitle, fullWidth }) {
     !fallback && dark ? "/native.png" : "/native.png";
   const [favicon, _setFavicon] = useState(resolveFavicon());
   const setFavicon = (fallback) => _setFavicon(resolveFavicon(fallback));
-  const [logo, setLogo] = useState("/native.svg");
+  //change logo on change mode
+  const resolveLogo = (fallback) =>
+    !fallback && dark ? "/native.svg" : "/nativeBlack.svg";
+  const [logo, _setLogo] = useState("/native.svg");
+  const setLogo = (fallback) => _setLogo(resolveLogo(fallback));
 
   useEffect(
-    () => setFavicon(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    () => {
+      setFavicon();
+      setLogo();
+    },
     [dark]
   );
 
@@ -149,7 +182,13 @@ const HeaderName = forwardRef(function HeaderName(
         <span className="post-title row-start-1 col-start-1">{postTitle}</span>
       )}
       <span className="row-start-1 col-start-1 flex items-baseline">
-        <Image src={logo} width={100} height={100} alt={siteTitle} className="site-title"/>
+        <Image
+          src={logo}
+          width={100}
+          height={100}
+          alt={siteTitle}
+          className="site-title"
+        />
         {/* <span className="site-title">{siteTitle}</span> */}
         <span className="site-description font-normal">
           &nbsp; {siteDescription}

@@ -89,7 +89,9 @@ class MyDocument extends Document {
             </>
           )}
           <link rel="icon" href="/favicon.ico" />
-          {config.appearance === 'auto'
+          <meta name="theme-color" content={config.lightBackground} media="(prefers-color-scheme: light)"/>
+          <meta name="theme-color" content={config.darkBackground} media="(prefers-color-scheme: dark)"/>
+          {/* {config.appearance === 'auto'
             ? (
             <>
             <meta name="theme-color" content={config.lightBackground} media="(prefers-color-scheme: light)"/>
@@ -99,7 +101,7 @@ class MyDocument extends Document {
             : (
             <meta name="theme-color" content={config.appearance === 'dark' ? config.darkBackground : config.lightBackground} />
               )
-          }
+          } */}
           {/* To ensure the initial background color follows media preference when ThemeProvider is
               not ready */}
           <style>
