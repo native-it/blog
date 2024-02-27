@@ -43,10 +43,10 @@ export default function Post (props) {
                 alt={BLOG.author}
                 width={24}
                 height={24}
-                src={`/native.png`}
+                src={post.avatar?post.avatar:`/native.png`}
                 className="rounded-full"
               />
-              <p className="ml-2 md:block">{BLOG.author}</p>
+              <p className="ml-2 md:block">{post.author?post.author:BLOG.author}</p>
             </a>
             <span className="block">&nbsp;/&nbsp;</span>
           </div>
