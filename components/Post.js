@@ -44,6 +44,7 @@ export default function Post (props) {
                 width={24}
                 height={24}
                 src={post.avatar?post.avatar:`/native.png`}
+                // src={`https://gravatar.com/avatar/${post.avatar}`}
                 className="rounded-full"
               />
               <p className="ml-2 md:block">{post.author?post.author:BLOG.author}</p>
