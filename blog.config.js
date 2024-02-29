@@ -1,6 +1,7 @@
 const BLOG = {
   title: 'Native',
   author: 'Native',
+  avatar: '/native.png',
   email: 'info@native-it.com',
   link: 'https://native-it.com',
   description: 'Mobile Development Experts',
