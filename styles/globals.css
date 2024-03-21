@@ -2,39 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-  font-named-instance: 'Regular';
-  src: url('/fonts/IBMPlexSansVar-Roman.woff2') format('woff2');
+  font-named-instance: "Regular";
+  src: url("/fonts/IBMPlexSansVar-Roman.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/fonts/IBMPlexSansVar-Italic.woff2') format('woff2');
+  font-named-instance: "Italic";
+  src: url("/fonts/IBMPlexSansVar-Italic.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Source Serif';
+  font-family: "Source Serif";
   font-weight: 100 900;
   font-display: swap;
   font-style: normal;
-  font-named-instance: 'Regular';
-  src: url('/fonts/SourceSerif.var.woff2') format('woff2');
+  font-named-instance: "Regular";
+  src: url("/fonts/SourceSerif.var.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Source Serif';
+  font-family: "Source Serif";
   font-weight: 100 900;
   font-display: swap;
   font-style: italic;
-  font-named-instance: 'Italic';
-  src: url('/fonts/SourceSerif-Italic.var.woff2') format('woff2');
+  font-named-instance: "Italic";
+  src: url("/fonts/SourceSerif-Italic.var.woff2") format("woff2");
 }
 
 html {
@@ -162,4 +162,44 @@ nav {
 
 .capture-pointer-events * {
   @apply pointer-events-none;
+}
+
+/* Style for consent banner */
+.consent-banner {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  width: 20%;
+  max-width: 300px; /* Max width to ensure it doesn't become too wide on larger screens */
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  z-index: 9999;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px white; /* White outline */
+}
+
+.consent-banner p {
+  margin-bottom: 10px; /* Add space between text and button */
+}
+
+.consent-banner button {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff; /* Add bottom border */
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 0; /* Remove border-radius */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.consent-banner button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.consent-banner a {
+  color: #007bff;
+  text-decoration: underline;
 }

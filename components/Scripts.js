@@ -6,30 +6,40 @@ const Scripts = () => {
 
   return (
     <>
-      {BLOG.analytics && BLOG.analytics.provider === 'ackee' && (
-        <Script
-          src={BLOG.analytics.ackeeConfig.tracker}
-          data-ackee-server={BLOG.analytics.ackeeConfig.dataAckeeServer}
-          data-ackee-domain-id={BLOG.analytics.ackeeConfig.domainId}
-        />
-      )}
-      {BLOG.analytics && BLOG.analytics.provider === 'ga' && (
+      {BLOG.analytics && BLOG.analytics.provider === "ga" && (
         <>
           <Script
+            strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${BLOG.analytics.gaConfig.measurementId}`}
           />
-          <Script strategy="lazyOnload" id="ga">
-            {`window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${BLOG.analytics.gaConfig.measurementId}', {
-                page_path: window.location.pathname,
-              });`}
-          </Script>
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('consent', 'default', {
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied',
+                  'wait_for_update': 500
+                });
+                
+                gtag('config', '${BLOG.analytics.gaConfig.measurementId}', {
+                    page_path: window.location.pathname,
+                });
+                dataLayer.push({'gtm.start': new Date().getTime(), 'event': 'gtm.js'});
+                `,
+            }}
+          />
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Scripts
+export default Scripts;
