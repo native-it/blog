@@ -186,12 +186,14 @@ nav {
 .consent-banner button {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #fff; /* Add bottom border */
+  border-bottom: 2px solid #fff;
   color: #fff;
   padding: 10px 20px;
   cursor: pointer;
-  border-radius: 0; /* Remove border-radius */
+  border-radius: 0;
   transition: background-color 0.3s, color 0.3s;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .consent-banner button:hover {
@@ -202,4 +204,10 @@ nav {
 .consent-banner a {
   color: #007bff;
   text-decoration: underline;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }

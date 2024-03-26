@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getLocalStorage, setLocalStorage } from "./storageHelper";
 
 export default function GoogleBanner() {
-  const [cookieConsent, setCookieConsent] = useState(true);
+  const [cookieConsent, setCookieConsent] = useState(false);
 
   useEffect(() => {
     const storedCookieConsent = getLocalStorage(
@@ -18,7 +18,7 @@ export default function GoogleBanner() {
       oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
       if (new Date(consentDate) < oneMonthAgo) {
-        setCookieConsent(false);
+        setCookieConsent(null);
         return;
       }
     }
@@ -42,7 +42,7 @@ export default function GoogleBanner() {
     <div
       className="consent-banner"
       id="consentBanner"
-      style={{ display: cookieConsent != true ? "block" : "none" }}
+      style={{ display: cookieConsent != null ? "none" : "block" }}
     >
       <p>
         We use cookies and tracking pixels to analyze our traffic. We also share
@@ -50,9 +50,14 @@ export default function GoogleBanner() {
         advertising and analytics partners. By continuing to use our site, you
         accept our use of cookies and tracking pixels.
       </p>
+      <div className="button-container">
       <button id="acceptCookiesBtn" onClick={() => setCookieConsent(true)}>
         Accept
       </button>
+      <button id="acceptCookiesBtn" onClick={() => setCookieConsent(false)}>
+        Decline
+      </button>
+      </div>
     </div>
   );
 }
