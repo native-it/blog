@@ -120,50 +120,6 @@ nav {
   -khtml-user-select: none;
   user-select: none;
 }
-
-@media (min-width: 768px) {
-  .sticky-nav-full {
-    @apply max-w-full border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
-  }
-  .header-name {
-    display: grid;
-  }
-  .site-title,
-  .post-title {
-    @apply transition duration-500;
-  }
-  .site-description {
-    opacity: 0;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0, 1);
-  }
-  .sticky-nav-full .site-description {
-    @apply opacity-100 transition duration-500;
-  }
-  .post-title {
-    @apply opacity-0;
-  }
-  .post-title ~ span .site-description {
-    @apply hidden;
-  }
-  .sticky-nav-full .post-title {
-    @apply opacity-100;
-  }
-  .sticky-nav-full .post-title ~ span .site-title {
-    @apply opacity-0;
-  }
-}
-
-@supports not (backdrop-filter: none) {
-  .sticky-nav {
-    backdrop-filter: none;
-    @apply bg-day bg-opacity-90 dark:bg-night dark:bg-opacity-90;
-  }
-}
-
-.capture-pointer-events * {
-  @apply pointer-events-none;
-}
-
 /* Style for consent banner */
 .consent-banner {
   position: fixed;
@@ -210,4 +166,56 @@ nav {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .sticky-nav-full {
+    @apply max-w-full border-b border-opacity-50 border-gray-200 dark:border-gray-600 dark:border-opacity-50;
+  }
+  .header-name {
+    display: grid;
+  }
+  .site-title,
+  .post-title {
+    @apply transition duration-500;
+  }
+  .site-description {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0, 1);
+  }
+  .sticky-nav-full .site-description {
+    @apply opacity-100 transition duration-500;
+  }
+  .post-title {
+    @apply opacity-0;
+  }
+  .post-title ~ span .site-description {
+    @apply hidden;
+  }
+  .sticky-nav-full .post-title {
+    @apply opacity-100;
+  }
+  .sticky-nav-full .post-title ~ span .site-title {
+    @apply opacity-0;
+  }
+}
+@media (max-width: 992px) {
+  .consent-banner {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+  .consent-banner {
+    width: 80%;
+  }
+}
+@supports not (backdrop-filter: none) {
+  .sticky-nav {
+    backdrop-filter: none;
+    @apply bg-day bg-opacity-90 dark:bg-night dark:bg-opacity-90;
+  }
+}
+
+.capture-pointer-events * {
+  @apply pointer-events-none;
 }
