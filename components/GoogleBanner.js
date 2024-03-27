@@ -9,7 +9,7 @@ export default function GoogleBanner() {
   useEffect(() => {
     const storedCookieConsent = getLocalStorage(
       "nativeItBlogComConsentGranted",
-      false
+      null
     );
     const consentDate = getLocalStorage("nativeItBlogComConsentDate", null);
 
